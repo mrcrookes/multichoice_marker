@@ -2,7 +2,6 @@ firstname = input('First name')
 secondname = input('Second name')
 
 course = input('Which course are you doing? (N5 or Higher)')
-paper = input('Which paper are you practicing? (e.g. 2017)')
 
 if course == 'Higher':
   markschemes = {
@@ -12,7 +11,7 @@ if course == 'Higher':
   '2018' : ['C',	'D',	'A',	'B',	'A',	'C',	'D',	'B',	'E',	'C',	'B',	'A',	'D',	'D',	'E',	'C',	'D',	'D',	'E',	'C'],
   '2019' : ['E',	'B',	'D',	'A',	'B',	'E',	'B',	'C',	'B',	'E',	'D',	'A',	'A',	'C',	'E',	'C',	'C',	'C',	'D',	'A',	'B',	'C',	'D',	'B',	'E']
   }
-else:
+elif course == 'N5':
   markschemes = {
     '2014' : ['D',	'D',	'B',	'C',	'B',	'A',	'A',	'C',	'B',	'B',	'E',	'A',	'E',	'A',	'E',	'D',	'D',	'E',	'C',	'D'],
     '2015' : ['A',	'A',	'C',	'E',	'B',	'D',	'D',	'A',	'C',	'E',	'E',	'A',	'E',	'C',	'B',	'C',	'A',	'B',	'E',	'D'],
@@ -21,11 +20,15 @@ else:
     '2018' : ['E',	'D',	'E',	'C',	'A',	'C',	'D',	'A',	'D',	'C',	'E',	'D',	'A',	'C',	'B',	'C',	'C',	'B',	'E',	'B',	'A',	'C',	'A',	'B',	'B'],
     '2019' : ['A',	'B',	'E',	'C',	'C',	'B',	'C',	'C',	'D',	'E',	'A',	'D',	'B',	'B',	'E',	'D',	'B',	'C',	'D',	'A',	'B',	'A',	'E',	'D',	'B']
   }
+else:
+  raise ValueError('Sorry I do not recognise that course')
+
+paper = input('Which paper are you practicing? (e.g. 2017)')
 
 try:
     markscheme = markschemes[paper]
 except:
-    raise Exception('Sorry cannot find paper, did you type it in correctly? (be careful with capital letters)')
+    raise Exception('Sorry cannot find a paper for that year')
 
 print('\n')
 print(course + ' Physics Section A: ' + paper)
